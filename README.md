@@ -68,7 +68,7 @@ Compared with 1.1.1, version 2.0 turns 3105 from a collection of separate tools 
 | System | Verified range/builds |
 | --- | --- |
 | iOS 17 | 17.0 through 17.7 (kernel exploit) |
-| iOS 18 | 18.0 through 18.7.1 (kernel exploit) |
+| iOS 18 | 18.0 through 18.7.1 (kernel exploit); 18.7.10 build 22H374 (app-only compatibility) |
 | iOS 26 | 26.0 through 26.6.1 |
 | iOS 27 Developer Beta 1 | `24A5355q` |
 | iOS 27 Developer Beta 2 | `24A5370h` |
@@ -113,3 +113,8 @@ The project also builds on work from Pocket Poster/Nugget, CrazyMind90, forcequi
 ## License
 
 Original portions of 3105 are distributed under the [GNU General Public License v3.0](LICENSE). Third-party components remain subject to their respective upstream copyright and license terms; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+
+### Limited compatibility build
+
+This ZIP recognizes iOS 18.7.10 build `22H374` for ordinary app-level use only. Kernel exploitation is disabled because compatibility has not been verified on that build. Features requiring kernel access or sandbox escape are not guaranteed to work.

@@ -61,7 +61,7 @@ So với 1.1.1, bản 2.0 chuyển 3105 từ một bộ công cụ riêng lẻ t
 | Hệ thống | Phiên bản/build |
 | --- | --- |
 | iOS 17 | 17.0 đến 17.7.x |
-| iOS 18 | 18.0 đến 18.7.1 |
+| iOS 18 | 18.0–18.7.1 (kernel); 18.7.10 build 22H374 (chỉ tương thích ứng dụng, không có kernel exploit) |
 | iOS 26 | 26.0 đến 26.6.1 |
 | iOS 27 Developer Beta 1 | `24A5355q` |
 | iOS 27 Developer Beta 2 | `24A5370h` |
@@ -84,3 +84,8 @@ Những build không có trong bảng sẽ được đánh dấu là không hỗ
 ## Giấy phép
 
 Phần mã gốc của 3105 được phát hành theo [GNU General Public License v3.0](LICENSE). Thành phần của bên thứ ba vẫn tuân theo bản quyền và điều khoản của dự án nguồn tương ứng; xem [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+
+
+### Lưu ý bản tương thích giới hạn
+
+Bản ZIP này nhận diện iOS 18.7.10 build `22H374` ở mức ứng dụng thông thường. Kernel exploit bị tắt trong bản này vì chưa xác minh được khả năng tương thích trên build đó. Các chức năng cần kernel hoặc sandbox escape không được đảm bảo hoạt động.

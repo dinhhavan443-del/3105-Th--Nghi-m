@@ -1,0 +1,18 @@
+3105 — TƯƠNG THÍCH GIỚI HẠN iOS 18.7.10
+
+Thông tin từ ảnh thiết bị:
+- Model identifier: iPhone11,2 (iPhone XS)
+- iOS: 18.7.10
+- Build: 22H374
+
+Bản chỉnh sửa này:
+- Nhận diện chính xác iOS 18.7.10 build 22H374 ở mức tương thích ứng dụng thông thường.
+- Giữ nguyên cấu trúc và các tệp dự án gốc.
+- Tắt KernelExploit trong bản này; không thực hiện kernel exploit hoặc sandbox escape.
+- Không sửa giả giới hạn kernel 18.7.1 thành 18.7.10.
+
+Giới hạn:
+- Không xác nhận kernel exploit hoạt động trên iOS 18.7.10 / iPhone XS.
+- Các tính năng cần quyền ngoài sandbox, kernel R/W hoặc sandbox escape có thể không hoạt động.
+- Chưa build/test bằng Xcode trên thiết bị thật trong môi trường này.
+- ZIP là mã nguồn, không phải IPA đã ký.
