@@ -1,0 +1,20 @@
+3105 SAFE MODE — GHI CHÚ BẢN CHỈNH SỬA
+
+Mục tiêu:
+- Cho phép thử nghiệm giao diện và các chức năng thông thường trong sandbox ứng dụng.
+- Tắt hoàn toàn việc gọi chuỗi kernel exploit trong bản này.
+- Không sửa danh sách phiên bản iOS đã được dự án xác minh.
+
+Lưu ý tương thích:
+- README gốc của dự án chỉ xác minh iOS 18 đến 18.7.1.
+- iOS 18.7.10 không nằm trong danh sách xác minh của mã nguồn.
+- Safe Mode KHÔNG biến iOS 18.7.10 thành phiên bản được hỗ trợ chính thức.
+- Các chức năng cần quyền ngoài sandbox / kernel sẽ không hoạt động.
+- Không có IPA đã ký trong ZIP này. Đây là mã nguồn Xcode đã chỉnh sửa.
+- Cần mở bằng Xcode trên macOS, kiểm tra signing/provisioning và build thử trên thiết bị thật.
+
+Thay đổi:
+- ThreeOneOSFive/helpers/KernelExploit.swift:
+  thêm cờ safeMode = true;
+  isApplicable luôn trả về false;
+  run() thoát ngay, không gọi exploit.
