@@ -242,7 +242,7 @@ struct AppDataBrowserView: View {
                     systemImage: app.containerPath.isEmpty ? "lock.fill" : "folder.badge.checkmark"
                 )
                 .font(.system(size: 10, weight: .medium))
-                .foregroundStyle(app.containerPath.isEmpty ? .secondary : .green)
+                .foregroundStyle(app.containerPath.isEmpty ? Color.secondary : Color.green)
                 .lineLimit(1)
             }
         }
