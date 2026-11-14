@@ -1,0 +1,28 @@
+PATCH: HIỂN THỊ ỨNG DỤNG ĐÃ PHÁT HIỆN DÙ CHƯA MỞ ĐƯỢC CONTAINER
+
+Các file đã sửa:
+- ThreeOneOSFive/helpers/ContainerStore.swift
+- ThreeOneOSFive/helpers/ContainerBrowserLogic.swift
+- ThreeOneOSFive/views/AppDataBrowserView.swift
+
+Thay đổi:
+1. installedAppsFromAPI() giữ ứng dụng được phát hiện kể cả khi chưa resolve được container.
+2. AppDataCatalogMerger giữ các mục metadata-only (containerPath rỗng), khử trùng lặp theo Bundle ID.
+3. Màn hình hiển thị trạng thái:
+   - Có thể duyệt dữ liệu: có containerPath.
+   - Chưa có quyền dữ liệu: không có containerPath; hàng ứng dụng không có NavigationLink.
+4. DevicePatchService không bị nới quyền: vẫn cần resolve container hợp lệ trước khi áp dụng/khôi phục patch.
+
+Giới hạn:
+- Discovery hiện vẫn dựa trên các API/khả năng discovery đã có trong dự án; đây không phải API công khai được Apple bảo đảm cho mọi ứng dụng.
+- Ứng dụng iOS thông thường không có API công khai để liệt kê toàn bộ ứng dụng đã cài hoặc đọc sandbox riêng của tất cả ứng dụng.
+- Patch này không thêm exploit, không giả mạo quyền và không cấp quyền truy cập mới.
+
+Cách áp dụng:
+1. Giải nén ZIP dự án gốc.
+2. Ghi đè đúng ba file theo đường dẫn ở trên.
+3. Mở ThreeOneOSFive.xcodeproj, kiểm tra ba file thuộc target ThreeOneOSFive.
+4. Clean Build Folder rồi build cho iPhone XS.
+5. Quét lại. Ứng dụng chưa có container sẽ vẫn hiện trong danh sách nhưng không mở được dữ liệu; patch target vẫn cần container hợp lệ.
+
+Chưa xác nhận build trên thiết bị thật trong môi trường này.
