@@ -229,12 +229,21 @@ struct AppDataBrowserView: View {
                     .truncationMode(.middle)
             }
 
-            Spacer()
+            Spacer(minLength: 6)
 
-            if !app.version.isEmpty {
-                Text(app.version)
-                    .font(.caption2)
-                    .foregroundStyle(.secondary)
+            VStack(alignment: .trailing, spacing: 3) {
+                if !app.version.isEmpty {
+                    Text(app.version)
+                        .font(.caption2)
+                        .foregroundStyle(.secondary)
+                }
+                Label(
+                    app.containerPath.isEmpty ? "Chưa có quyền dữ liệu" : "Có thể duyệt dữ liệu",
+                    systemImage: app.containerPath.isEmpty ? "lock.fill" : "folder.badge.checkmark"
+                )
+                .font(.system(size: 10, weight: .medium))
+                .foregroundStyle(app.containerPath.isEmpty ? .secondary : .green)
+                .lineLimit(1)
             }
         }
         .padding(.vertical, 2)
