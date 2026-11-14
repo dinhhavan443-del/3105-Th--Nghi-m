@@ -2,7 +2,7 @@ import Foundation
 
 enum ExploitSupportPolicy {
     static let verifiedIOS17Range = "17.0–17.7.x"
-    static let verifiedIOS18Range = "18.0–18.7.1"
+    static let verifiedIOS18Range = "18.0–18.7.1 (kernel); 18.7.10 (22H374, app-only)"
     static let verifiedIOS26Range = "26.0–26.6.1"
 
     static let verifiedIOS27Builds: [(beta: Int, publicBeta: Int?, build: String)] = [
@@ -36,6 +36,12 @@ enum ExploitSupportPolicy {
 
     static func isSupported(major: Int, minor: Int, patch: Int, build: String) -> Bool {
         if supportsKernelExploit(major: major, minor: minor, patch: patch) {
+            return true
+        }
+
+        // App-level compatibility only for the exact device OS build reported.
+        // This does NOT authorize the kernel exploit on iOS 18.7.10.
+        if major == 18, minor == 7, patch == 10, build == "22H374" {
             return true
         }
 
