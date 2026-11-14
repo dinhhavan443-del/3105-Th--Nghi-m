@@ -153,8 +153,10 @@ enum ContainerStore {
                     missingContainer += 1
                 }
             }
-            // Skip entries we cannot browse — empty path is dropped by mergers anyway.
-            guard !containerPath.isEmpty else { continue }
+            // Keep the app in the discovery list even when its private data
+            // container cannot be resolved. Discovery and data access are
+            // separate capabilities: the UI can show the app, while navigation
+            // and patching remain disabled until a real container is available.
             apps.append(InstalledApp(
                 bundleID: bundleID,
                 name: info["name"] as? String ?? "",
@@ -163,7 +165,7 @@ enum ContainerStore {
                 icon: info["icon"] as? UIImage
             ))
         }
-        log("browser: LS/API apps=\(apps.count) raw=\(raw.count) missingContainer=\(missingContainer)")
+        log("browser: LS/API discovered=\(apps.count) raw=\(raw.count) withoutContainer=\(missingContainer)")
         return apps
     }
 

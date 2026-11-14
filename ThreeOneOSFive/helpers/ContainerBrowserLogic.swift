@@ -209,11 +209,14 @@ enum AppDataCatalogMerger {
             let bundleID = identifier(element)
             let canonicalPath = ContainerDiscoveryMerger.canonicalPath(path(element))
             guard !bundleID.isEmpty,
-                  !canonicalPath.isEmpty,
                   seenIdentifiers.insert(bundleID).inserted else {
                 continue
             }
-            identifiedPaths.insert(canonicalPath)
+            // Keep discovered apps even when their private container is not
+            // accessible. An empty path means metadata-only, never browseable.
+            if !canonicalPath.isEmpty {
+                identifiedPaths.insert(canonicalPath)
+            }
             result.append(element)
         }
 
